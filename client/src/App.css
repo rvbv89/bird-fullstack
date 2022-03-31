@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+}
+
+.ui.header {
+  display: flex;
+  justify-content: center;
+  padding: .75em;
+}
+.main-container {
+  margin: 3em;
+}
+
+.ui.blue.table {
+  max-height: 500px;
+  min-width: 40vw;
+}
+
+th {
+  max-width: fit-content;
+}
+
+#form-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-cell {
+  cursor: pointer;
+}
+.map-wrapper {
+  min-width: 50vw;
+  padding: 2em;
+}
+.map-container {
+  height: 400px;
+  min-width: 30vw;
+}
