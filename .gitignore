@@ -1,2 +1,4 @@
 /node_modules
 /client/node_modules
+old_routes.js
+tailwind.config.js
