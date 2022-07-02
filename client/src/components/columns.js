@@ -9,7 +9,6 @@ export const COLUMNS = [
           onClick={() => {
             const ebird_redirect = `https://ebird.org/species/${props.cell.row.original["speciesCode"]}`;
             window.open(ebird_redirect);
-            console.log("testingproppass");
           }}
         >
           {props.cell.value}
@@ -23,11 +22,10 @@ export const COLUMNS = [
     Cell: (props) => {
       return (
         <div
-        className="table-cell"
+          className="table-cell"
           onClick={() => {
             const ebird_redirect = `https://ebird.org/species/${props.cell.row.original["speciesCode"]}`;
             window.open(ebird_redirect);
-            console.log("testingproppass");
           }}
         >
           {props.cell.value}
@@ -39,9 +37,10 @@ export const COLUMNS = [
     Header: "Location",
     accessor: "locName",
     Cell: (props) => {
-      return <div
-      onClick={()=>{
-        console.log(props.cell.row.original)
+      return <div className="table-cell"
+      onClick={() => {
+        const ebird_redirect = `https://ebird.org/species/${props.cell.row.original["speciesCode"]}`;
+        window.open(ebird_redirect);
       }}
       >{props.cell.value}</div>;
     },
@@ -50,7 +49,12 @@ export const COLUMNS = [
     Header: "Date",
     accessor: "obsDt",
     Cell: (props) => {
-      return <div>{props.cell.value}</div>;
+      return <div className="table-cell"
+      
+      onClick={() => {
+        const ebird_redirect = `https://ebird.org/species/${props.cell.row.original["speciesCode"]}`;
+        window.open(ebird_redirect);
+      }}>{props.cell.value}</div>;
     },
   },
 ];

@@ -1,28 +1,11 @@
 import React, { useMemo } from "react";
 import { useTable, useSortBy, usePagination } from "react-table";
 import { COLUMNS } from "./columns";
+import { Popup } from "semantic-ui-react";
 
-export default function BasicTable({ initData }) {
+export default function Table({ initData }) {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => initData, [initData]);
-
-  // props.cell.row.original["speciesCode"]
-
-  //function for fetching data for table page render
-  // const fetchPageData = useCallback(
-  //   ({ pageSize, pageIndex }) => {
-  //     const fetchId = ++fetchIdRef.current;
-  //     setLoading(true);
-  //     if (fetchId === fetchIdRef.current) {
-  //       fetchRenderData({
-  //         limit: pageSize,
-  //         skip: pageSize * pageIndex,
-  //         search: searchTerm,
-  //       });
-  //     }
-  //   },
-  //   [searchTerm]
-  // );
 
   const tableInstance = useTable(
     {
@@ -55,7 +38,7 @@ export default function BasicTable({ initData }) {
 
   return (
     <div>
-      <table className="ui blue table" {...getTableProps()}>
+      <table className="ui padded celled blue table m-5" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -77,15 +60,17 @@ export default function BasicTable({ initData }) {
               <tr className="table-row" {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <Popup
+                      content="Click to open a new tab with more info..."
+                      trigger={
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      }
+                    />
                   );
                 })}
               </tr>
             );
           })}
-          <tr>
-            <td></td>
-          </tr>
         </tbody>
       </table>
       <div className="pagination">

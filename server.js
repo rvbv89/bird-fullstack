@@ -10,16 +10,12 @@ const PORT = 5000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 
-
-
-
 //***Create Route for Mapbox token */
 
 app.get("/pop/:lat/:lng", async (req, res) => {
   const lat = req.params.lat;
-  // lat = lat.substring(1);
   const lng = req.params.lng;
-  console.log(lat)
+
   try {
     const response = await axios.get(
       `https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${lng}`,
@@ -40,14 +36,11 @@ app.get("/pop/:lat/:lng", async (req, res) => {
 
 app.get("/photo/:comname", async (req, res) => {
   const comname = req.params.comname;
-  console.log(comname)
+  console.log(comname);
   try {
-    const response = await axios.get(
-      `https://ebird.org/species/${comname}/`,
-   
-    );
-    
-    console.log(response)
+    const response = await axios.get(`https://ebird.org/species/${comname}/`);
+
+    console.log(response);
     // res.send(JSON.stringify(data));
     // const data = response.data;
     // console.log(data);
